@@ -1,4 +1,5 @@
 using apbd20_cw10.Data;
+using apbd20_cw10.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 builder.Services.AddDbContext<DoctorContext>(
     options => options.UseSqlServer("Name=ConnectionStrings:Default"));
+builder.Services.AddScoped<IDbService, DbService>();
 
 var app = builder.Build();
 
